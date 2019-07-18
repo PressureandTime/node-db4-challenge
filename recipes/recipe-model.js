@@ -15,6 +15,11 @@ function add({ name, description, instructions }) {
 }
 
 
+function update(id, changes) {
+  return db('recipe')
+    .where({ id })
+    .update(changes, '*');
+}
 
 
 
@@ -22,4 +27,5 @@ module.exports = {
   find,
   findById,
   add,
+  update,
 };

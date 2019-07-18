@@ -46,4 +46,24 @@ router.post('/', async (req, res) => {
 });
 
 
+router.put('/:id', async (req, res) => {
+  const { id } = req.params;
+  const changes = req.body;
+
+  try {
+    const recipe = await Recipes.findById(id);
+
+    if (recipe) {
+      const updatedRecipe = await Recipes.update(id, changes);
+      res.json(updatedRecipe);
+    } else {
+      res.status(404).json({ message: 'Could not find recipe with given id' });
+    }
+  } catch (err) {
+    res.status(500).json({ message: 'Failed to update recipe' });
+  }
+});
+
+
+
 module.exports = router;
