@@ -10,8 +10,8 @@ function findById(id) {
 }
 
 
-function add({ name }) {
-  return db('recipe').insert({ name });
+function add({ name, description, instructions }) {
+  return db('recipe').insert({ name, description, instructions });
 }
 
 
